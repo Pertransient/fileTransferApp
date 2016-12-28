@@ -31,7 +31,6 @@ def ask_quit(self):
         os._exit(0)
 
 def load_file(self):
-    global fname
     fname = askdirectory()
     if fname:
         try:
@@ -43,7 +42,6 @@ def load_file(self):
         return
     
 def load_file2(self):
-    global fname2
     fname2 = askdirectory()
     if fname2:
         try:
@@ -55,10 +53,8 @@ def load_file2(self):
         return
 
 def move_files(self):
-    global fname
-    global fname2
-    source = fname
-    dest = fname2
+    source = self.txt_browse.get("1.0",'end-1c')
+    dest = self.txt_browse2.get("1.0",'end-1c')
 
     for file in glob.glob(os.path.join(source, '*.txt')):
         file_name = os.path.basename(file)
